@@ -34,11 +34,12 @@ fix `./migrations/***sensor_data./down.sql` , `up.sql`
 
 CREATE TABLE sensor_data(
 	id SERIAL PRIMARY KEY,
-    time_stamp time,
+    time_stamp timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
     data0 real,
     data1 real,
     data2 real
 );
+
 
 ```
 

@@ -23,7 +23,6 @@ pub struct SensorData{
 #[derive(Debug, Insertable)]
 #[table_name = "sensor_data"]
 pub struct NewSensorData{
-    pub time_stamp: NaiveDateTime,
     pub data0: Option<f32>,
     pub data1: Option<f32>,
     pub data2: Option<f32>,
