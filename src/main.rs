@@ -21,11 +21,16 @@ fn hello() -> String {
     "hello, world!!".to_string()
 }
 
-//#[post("/sensor_data", format = "json", data = "<sensor_data>")]
-//fn post(sensor_data: Json<NewSensorData>, connection: db::Connection) -> Json<JsonValue> {
-//    let insert_data = sensor_data.into_inner();
-//    //Json(json!(::create(insert_user, &connection)))
-//}
+#[post("/sensor_data", format = "json", data = "<sensor_data>")]
+fn post_sensor_data(sensor_data: String) -> String {
+    println!("{}", sensor_data);
+    "OK".to_string()
+}
+
+#[post("/test_post", format = "json", data = "<test_post_data>")]
+fn test_post(test_post_data: String) -> String {
+    test_post_data
+}
 
 fn main() {
     println!("Hello, world!");
@@ -37,5 +42,7 @@ fn main() {
     rocket.mount("/api",
     routes![
         hello,
+        post_sensor_data,
+        test_post,
     ]).launch();
 }

@@ -15,14 +15,16 @@ use chrono::{DateTime, Utc};
 pub struct SensorData{
 	pub id: u64,
     pub time_stamp: NaiveDateTime,
+    pub write_key: String,
     pub data0: Option<f32>,
     pub data1: Option<f32>,
     pub data2: Option<f32>,
 }
 
-#[derive(Debug, Insertable)]
+#[derive(Debug, Insertable, Deserialize)]
 #[table_name = "sensor_data"]
-pub struct NewSensorData{
+pub struct NewSensorData<'a>{
+    pub write_key: &'a str,
     pub data0: Option<f32>,
     pub data1: Option<f32>,
     pub data2: Option<f32>,
